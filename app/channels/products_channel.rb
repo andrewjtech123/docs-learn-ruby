@@ -6,10 +6,12 @@
 # We make no guarantees that this code is fit for any purpose.
 # Visit http://www.pragmaticprogrammer.com/titles/rails51 for more book information.
 #---
-module ApplicationHelper
-  def render_if(condition, record)
-    if condition
-      render record
-    end
+class ProductsChannel < ApplicationCable::Channel
+  def subscribed
+    stream_from "products"
+  end
+
+  def unsubscribed
+    # Any cleanup needed when channel is unsubscribed
   end
 end
